@@ -32,6 +32,7 @@ public class Employee {
         return salary;
     }
 
+
     // Optionally, you can add a method to display employee details
     public String displayInfo() {
         return "Name: " + name + ", ID: " + id + ", Salary: $" + salary;
