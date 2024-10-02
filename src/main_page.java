@@ -186,6 +186,11 @@ public class main_page extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jButton5.setForeground(new java.awt.Color(0, 51, 204));
         jButton5.setText("Change Password");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jButton6.setForeground(new java.awt.Color(0, 51, 204));
@@ -293,20 +298,32 @@ public class main_page extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Moving into the "Add Employee" UI
         add_employee add_employee = new add_employee ();
         add_employee.show();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        //Moving into the "Salary" UI
+        Salary Salary = new Salary();
+        Salary.show();
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //Moving into the "employee report" UI
         employee_report employee_report = new employee_report();
         employee_report.show();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        //Moving into the "change_password" UI
+        change_password change_password = new change_password();
+        change_password.show();
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
