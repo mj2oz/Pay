@@ -298,7 +298,7 @@ public class main_page extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Moving into the "Add Employee" UI
+        //Moving into the "Add Employee" UIpublic static String password = "1234";
         add_employee add_employee = new add_employee ();
         add_employee.show();
         dispose();

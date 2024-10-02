@@ -4,6 +4,9 @@ import javax.swing.JOptionPane;
 
 public class login_page extends javax.swing.JFrame {
 
+    
+    public static String Password;
+
     /**
      * Creates new form login_page
      */
@@ -78,6 +81,12 @@ public class login_page extends javax.swing.JFrame {
             }
         });
 
+        pass_login_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pass_login_fieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -115,8 +124,8 @@ public class login_page extends javax.swing.JFrame {
                         .addGap(78, 78, 78)
                         .addComponent(pass_login_field, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(127, 127, 127)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,9 +150,12 @@ public class login_page extends javax.swing.JFrame {
         String name_login =name_login_field.getText();
         String pass_login=pass_login_field.getText();
         
-        //"If" statement to complete the login
         
-        if (name_login.equals("admin")  && pass_login.equals("1234")){
+        
+        //"If" statement to complete the login
+        String password = "1234";
+        
+        if (name_login.equals("admin")  && pass_login.equals(password)){
             JOptionPane.showMessageDialog(null, "LOGIN SUCCESSFULLY","LOGIN SUCCESSFULLY",JOptionPane.INFORMATION_MESSAGE);
             main_page main_page = new main_page();
             main_page.show();
@@ -159,6 +171,10 @@ public class login_page extends javax.swing.JFrame {
     private void name_login_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_login_fieldActionPerformed
         
     }//GEN-LAST:event_name_login_fieldActionPerformed
+
+    private void pass_login_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pass_login_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pass_login_fieldActionPerformed
 
     /**
      * @param args the command line arguments
