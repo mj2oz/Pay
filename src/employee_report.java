@@ -8,31 +8,29 @@
  * @author amrr
  */
 import java.util.ArrayList;
+
 public class employee_report extends javax.swing.JFrame {
-private ArrayList<Employee> employees = new ArrayList<>();
+    private EmployeeManager employeeManager; // Declare EmployeeManager as a class variable
 
     /**
      * Creates new form employee_report
      */
     public employee_report() {
         initComponents();
-        initializeEmployees();
-        
+        employeeManager = new EmployeeManager(); // Initialize the EmployeeManager        
     }
 
-    private void initializeEmployees() {
-        // Add predefined employees (you can customize these)
-        employees.add(new Employee("John Doe", "E001", 50000));
-        employees.add(new Employee("Jane Smith", "E002", 60000));
-        employees.add(new Employee("Alice Johnson", "E003", 55000));
-    }
+
+
     
-    private void displayEmployees() {
-        jTextArea1.setText(""); // Clear existing text
-        for (Employee emp : employees) {
-            jTextArea1.append(emp.displayInfo()); // Append each employee's info
-        }
+private void displayEmployees() {
+    jTextArea1.setText(""); // Clear existing text
+    ArrayList<Employee> employees = employeeManager.getEmployees(); // Get the list of employees
+    for (Employee emp : employees) {
+        jTextArea1.append(emp.displayInfo() + "\n"); // Append each employee's info
     }
+}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -105,13 +103,10 @@ private ArrayList<Employee> employees = new ArrayList<>();
                         .addComponent(Generate_Report)
                         .addGap(294, 294, 294))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(142, 142, 142)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(217, 217, 217)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addContainerGap(166, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -120,9 +115,9 @@ private ArrayList<Employee> employees = new ArrayList<>();
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(149, 149, 149)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(105, 105, 105)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
                 .addComponent(Generate_Report)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
