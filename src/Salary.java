@@ -7,12 +7,17 @@
  *
  * @author amrr
  */
+import javax.swing.JOptionPane;
+import java.util.List;      // Import the List interface
 public class Salary extends javax.swing.JFrame {
+    private EmployeeManager employeeManager; // Declare EmployeeManager as a class variable
 
     /**
      * Creates new form Salary
      */
     public Salary() {
+        employeeManager = EmployeeManager.getInstance(); // Get the Singleton instance
+
         initComponents();
     }
 
@@ -32,14 +37,11 @@ public class Salary extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel4 = new javax.swing.JLabel();
+        Employee_ID_Field = new javax.swing.JTextField();
+        Get_Old_Salary = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        New_Salary_Field = new javax.swing.JTextField();
+        Update_Salary = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -98,32 +100,35 @@ public class Salary extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 204, 255));
         jLabel2.setText("Salary");
 
-        jLabel3.setText("Ender ID");
+        jLabel3.setText("Enter ID");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Employee_ID_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                Employee_ID_FieldActionPerformed(evt);
             }
         });
 
-        jButton2.setText("get salary");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setEnabled(false);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jLabel4.setText("Employee's Salary");
+        Get_Old_Salary.setText("get salary");
+        Get_Old_Salary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Get_Old_SalaryActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("New Salary");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        New_Salary_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                New_Salary_FieldActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Update Salary");
+        Update_Salary.setText("Update Salary");
+        Update_Salary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Update_SalaryActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -134,30 +139,24 @@ public class Salary extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(226, 226, 226)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Update_Salary, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(97, 97, 97)
-                                        .addComponent(jLabel2))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(51, 51, 51)
-                                        .addComponent(jTextField1))))
+                                .addGap(169, 169, 169)
+                                .addComponent(jLabel2))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)))))
+                                .addGap(51, 51, 51)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(New_Salary_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Employee_ID_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(208, 208, 208)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Get_Old_Salary, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45))
         );
         jPanel1Layout.setVerticalGroup(
@@ -169,19 +168,15 @@ public class Salary extends javax.swing.JFrame {
                 .addGap(73, 73, 73)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Employee_ID_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(35, 35, 35)
+                .addComponent(Get_Old_Salary, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(136, 136, 136)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(New_Salary_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(194, 194, 194)
+                .addComponent(Update_Salary, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -207,13 +202,94 @@ public class Salary extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void Employee_ID_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Employee_ID_FieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_Employee_ID_FieldActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void New_Salary_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_New_Salary_FieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_New_Salary_FieldActionPerformed
+
+    private void Get_Old_SalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Get_Old_SalaryActionPerformed
+    String employeeID = Employee_ID_Field.getText().trim(); // Get employee ID and trim whitespace
+
+    // Check if employee ID is empty
+    if (employeeID.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Employee ID cannot be empty.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+        return; // Exit if validation fails
+    }
+
+    // Get the instance of EmployeeManager
+    EmployeeManager employeeManager = EmployeeManager.getInstance();
+    
+    // Retrieve the list of employees
+    List<Employee> employees = employeeManager.getEmployees(); 
+
+    Employee foundEmployee = null;
+
+    // Search for the employee in the ArrayList
+    for (Employee emp : employees) {
+        if (emp.getId().equals(employeeID)) { // Assuming getId() method exists in Employee class
+            foundEmployee = emp;
+            break; // Exit loop once found
+        }
+    }
+
+    // Check if employee was found and display salary
+    if (foundEmployee != null) {
+        double salary = foundEmployee.getSalary(); // Assuming getSalary() method exists in Employee class
+        JOptionPane.showMessageDialog(this, "The salary for Employee ID " + employeeID + " is: " + salary, "Salary Information", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(this, "Employee ID not found.", "Not Found", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_Get_Old_SalaryActionPerformed
+
+    private void Update_SalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Update_SalaryActionPerformed
+ String employeeID = Employee_ID_Field.getText().trim(); // Get employee ID and trim whitespace
+    String newSalaryStr = New_Salary_Field.getText().trim(); // Get new salary and trim whitespace
+
+    // Check if employee ID or new salary is empty
+    if (employeeID.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Employee ID cannot be empty.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+        return; // Exit if validation fails
+    }
+
+    if (newSalaryStr.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "New salary cannot be empty.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+        return; // Exit if validation fails
+    }
+
+    try {
+        double newSalary = Double.parseDouble(newSalaryStr); // Convert new salary to double
+
+        // Get the instance of EmployeeManager
+        EmployeeManager employeeManager = EmployeeManager.getInstance();
+        
+        // Retrieve the list of employees
+        List<Employee> employees = employeeManager.getEmployees(); 
+
+        Employee foundEmployee = null;
+
+        // Search for the employee in the ArrayList
+        for (Employee emp : employees) {
+            if (emp.getId().equals(employeeID)) { // Assuming getId() method exists in Employee class
+                foundEmployee = emp;
+                break; // Exit loop once found
+            }
+        }
+
+        // Check if employee was found and update salary
+        if (foundEmployee != null) {
+            foundEmployee.setSalary(newSalary); // Assuming setSalary() method exists in Employee class
+            JOptionPane.showMessageDialog(this, "Salary updated for Employee ID " + employeeID + " to: " + newSalary, "Update Successful", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Employee ID not found.", "Not Found", JOptionPane.ERROR_MESSAGE);
+        }
+
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Please enter a valid salary.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_Update_SalaryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,20 +327,17 @@ public class Salary extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Employee_ID_Field;
+    private javax.swing.JButton Get_Old_Salary;
+    private javax.swing.JTextField New_Salary_Field;
+    private javax.swing.JButton Update_Salary;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

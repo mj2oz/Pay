@@ -18,7 +18,6 @@ public class employee_report extends javax.swing.JFrame {
     public employee_report() {
         initComponents();
         employeeManager = EmployeeManager.getInstance(); // Get the Singleton instance
-        // Initialize the EmployeeManager        
     }
 
 

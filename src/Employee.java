@@ -9,7 +9,7 @@
  */
 public class Employee {
     private String name;
-    private String id; // Assuming ID is a String. Change to int if needed.
+    private String id; // Assuming ID is a String. 
     private double salary;
 
     // Constructor
@@ -32,7 +32,11 @@ public class Employee {
         return salary;
     }
 
-
+    // Setter for salary
+    public void setSalary(double salary) {
+        this.salary = salary; // Update the salary field
+    }
+    
     // Optionally, you can add a method to display employee details
     public String displayInfo() {
         return "Name: " + name + ", ID: " + id + ", Salary: $" + salary;
