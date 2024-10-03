@@ -17,9 +17,9 @@ public class EmployeeManager {
     private EmployeeManager() {
         employees = new ArrayList<>();
         // Add default employees
-        employees.add(new Employee("John Doe", "E001", 50000));
-        employees.add(new Employee("Jane Smith", "E002", 55000));
-        employees.add(new Employee("Alice Johnson", "E003", 60000));
+        employees.add(new Employee("John Doe", "E001", 50000, 500, 200));
+        employees.add(new Employee("Jane Smith", "E002", 55000, 700, 800));
+        employees.add(new Employee("Alice Johnson", "E003", 60000, 1000, 900));
     }
 
     public static synchronized EmployeeManager getInstance() {

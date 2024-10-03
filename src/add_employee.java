@@ -40,6 +40,10 @@ public class add_employee extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         Salary_Field = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        Deductions_Field = new javax.swing.JTextField();
+        Bonus_Field = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,7 +96,7 @@ public class add_employee extends javax.swing.JFrame {
 
         jLabel4.setText("Employee ID");
 
-        jLabel5.setText("Salary");
+        jLabel5.setText("Basic Salary");
 
         Salary_Field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +111,16 @@ public class add_employee extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Deductions");
+
+        jLabel7.setText("Bonus");
+
+        Deductions_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Deductions_FieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -115,7 +129,7 @@ public class add_employee extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(148, 148, 148))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -123,14 +137,21 @@ public class add_employee extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
                         .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Employee_ID_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Name_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Salary_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2))
-                        .addContainerGap(340, Short.MAX_VALUE))))
+                            .addComponent(jButton2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(Deductions_Field, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Bonus_Field, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Salary_Field, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(45, 45, 45)))
+                        .addGap(340, 340, 340))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,9 +171,17 @@ public class add_employee extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(Salary_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(Deductions_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(Bonus_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -180,6 +209,8 @@ public class add_employee extends javax.swing.JFrame {
        String name = Name_Field.getText().trim(); // Get name and trim whitespace
     String id = Employee_ID_Field.getText().trim(); // Get ID and trim whitespace
     String salary = Salary_Field.getText().trim(); // Get salary and trim whitespace
+    String deductions = Deductions_Field.getText().trim(); // Get salary and trim whitespace
+    String bonus = Bonus_Field.getText().trim(); // Get salary and trim whitespace
 
     // Check if name or ID is empty
     if (name.isEmpty()) {
@@ -194,13 +225,17 @@ public class add_employee extends javax.swing.JFrame {
 
     try {
         double Salary_double = Double.parseDouble(salary); // Convert salary to double
+        double Bonus_double = Double.parseDouble(bonus); // Convert salary to double
+        double Deductions_double = Double.parseDouble(deductions); // Convert salary to double
 
         // Clear fields before adding the employee
         Name_Field.setText("");
         Employee_ID_Field.setText("");
         Salary_Field.setText("");
+        Deductions_Field.setText("");
+        Bonus_Field.setText("");
 
-        Employee newEmployee = new Employee(name, id, Salary_double); // Create new Employee object
+        Employee newEmployee = new Employee(name, id, Salary_double, Bonus_double, Deductions_double); // Create new Employee object
         employeeManager.addEmployee(newEmployee); // Add employee to the manager
 
         JOptionPane.showMessageDialog(this, "Added Employee: " + newEmployee.displayInfo(), "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -213,6 +248,10 @@ public class add_employee extends javax.swing.JFrame {
     private void Salary_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Salary_FieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Salary_FieldActionPerformed
+
+    private void Deductions_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Deductions_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Deductions_FieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,6 +289,8 @@ public class add_employee extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Bonus_Field;
+    private javax.swing.JTextField Deductions_Field;
     private javax.swing.JTextField Employee_ID_Field;
     private javax.swing.JTextField Name_Field;
     private javax.swing.JTextField Salary_Field;
@@ -260,6 +301,8 @@ public class add_employee extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

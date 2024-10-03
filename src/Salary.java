@@ -42,6 +42,10 @@ public class Salary extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         New_Salary_Field = new javax.swing.JTextField();
         Update_Salary = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        Deductions_Field = new javax.swing.JTextField();
+        Bonus_Field = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -130,6 +134,16 @@ public class Salary extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Bonus");
+
+        jLabel6.setText("Deductions");
+
+        Deductions_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Deductions_FieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -149,15 +163,19 @@ public class Salary extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6))
                                 .addGap(51, 51, 51)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(New_Salary_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Employee_ID_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(Employee_ID_Field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                                    .addComponent(New_Salary_Field, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Deductions_Field, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Bonus_Field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(208, 208, 208)
                         .addComponent(Get_Old_Salary, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(45, 45, 45))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,14 +186,22 @@ public class Salary extends javax.swing.JFrame {
                 .addGap(73, 73, 73)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Employee_ID_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Employee_ID_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(Get_Old_Salary, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(New_Salary_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(New_Salary_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(194, 194, 194)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(Deductions_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(Bonus_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(117, 117, 117)
                 .addComponent(Update_Salary, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -245,8 +271,11 @@ public class Salary extends javax.swing.JFrame {
     }//GEN-LAST:event_Get_Old_SalaryActionPerformed
 
     private void Update_SalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Update_SalaryActionPerformed
- String employeeID = Employee_ID_Field.getText().trim(); // Get employee ID and trim whitespace
+    String employeeID = Employee_ID_Field.getText().trim(); // Get employee ID and trim whitespace
     String newSalaryStr = New_Salary_Field.getText().trim(); // Get new salary and trim whitespace
+    String BonusStr = Bonus_Field.getText().trim(); // Get new Bonus and trim whitespace
+    String DeductionsStr = Deductions_Field.getText().trim(); // Get new Deductions and trim whitespace
+
 
     // Check if employee ID or new salary is empty
     if (employeeID.isEmpty()) {
@@ -261,6 +290,9 @@ public class Salary extends javax.swing.JFrame {
 
     try {
         double newSalary = Double.parseDouble(newSalaryStr); // Convert new salary to double
+        double newBonus = Double.parseDouble(BonusStr);
+        double newDeductions = Double.parseDouble(DeductionsStr);
+
 
         // Get the instance of EmployeeManager
         EmployeeManager employeeManager = EmployeeManager.getInstance();
@@ -280,7 +312,7 @@ public class Salary extends javax.swing.JFrame {
 
         // Check if employee was found and update salary
         if (foundEmployee != null) {
-            foundEmployee.setSalary(newSalary); // Assuming setSalary() method exists in Employee class
+            foundEmployee.setSalary(newSalary, newDeductions, newBonus); // Assuming setSalary() method exists in Employee class
             JOptionPane.showMessageDialog(this, "Salary updated for Employee ID " + employeeID + " to: " + newSalary, "Update Successful", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Employee ID not found.", "Not Found", JOptionPane.ERROR_MESSAGE);
@@ -290,6 +322,10 @@ public class Salary extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Please enter a valid salary.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_Update_SalaryActionPerformed
+
+    private void Deductions_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Deductions_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Deductions_FieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -327,6 +363,8 @@ public class Salary extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Bonus_Field;
+    private javax.swing.JTextField Deductions_Field;
     private javax.swing.JTextField Employee_ID_Field;
     private javax.swing.JButton Get_Old_Salary;
     private javax.swing.JTextField New_Salary_Field;
@@ -335,7 +373,9 @@ public class Salary extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
