@@ -10,7 +10,7 @@
 import java.util.ArrayList;
 
 public class EmployeeManager {
-    private final ArrayList<Employee> employees;
+    private ArrayList<Employee> employees;
 
     public EmployeeManager() {
         employees = new ArrayList<>();
@@ -22,11 +22,6 @@ public class EmployeeManager {
         employees.add(new Employee("John Doe", "E001", 50000));
         employees.add(new Employee("Jane Smith", "E002", 60000));
         employees.add(new Employee("Alice Johnson", "E003", 55000));
-    }
-    
-// Method to add a new employee
-    public void addEmployee(Employee employee) {
-        employees.add(employee); // Add the employee to the list
     }
 
     public ArrayList<Employee> getEmployees() {
