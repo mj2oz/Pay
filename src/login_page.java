@@ -3,14 +3,13 @@ import javax.swing.JOptionPane;
 
 
 public class login_page extends javax.swing.JFrame {
-
-    
-    public static String Password;
+    private PasswordManager passwordManager;
 
     /**
      * Creates new form login_page
      */
     public login_page() {
+        this.passwordManager = PasswordManager.getInstance();
         initComponents();
     }
 
@@ -153,10 +152,10 @@ public class login_page extends javax.swing.JFrame {
         
         
         //"If" statement to complete the login
-        String password = "1234";
+        //String password = "1234";
         
-        if (name_login.equals("admin")  && pass_login.equals(password)){
-            JOptionPane.showMessageDialog(null, "LOGIN SUCCESSFULLY","LOGIN SUCCESSFULLY",JOptionPane.INFORMATION_MESSAGE);
+        if (name_login.equals("admin")  && pass_login.equals(passwordManager.getPassword())){
+            JOptionPane.showMessageDialog(null, "LOGIN SUCCESSFUL","LOGIN SUCCESSFUL",JOptionPane.INFORMATION_MESSAGE);
             main_page main_page = new main_page();
             main_page.show();
             dispose();     
