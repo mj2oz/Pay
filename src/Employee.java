@@ -43,6 +43,7 @@ public class Employee {
         this.salary = salary; // Update the salary field
         this.deductions = deductions; // Update deductions
         this.bonus = bonus; // Update bonus
+        this.total_salary = salary + bonus - deductions;
     }
     
     // Optionally, you can add a method to display employee details

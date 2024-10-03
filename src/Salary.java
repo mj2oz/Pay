@@ -306,6 +306,7 @@ public class Salary extends javax.swing.JFrame {
         double newBonus = Double.parseDouble(BonusStr);
         double newDeductions = Double.parseDouble(DeductionsStr);
         double newTotalSalary = newSalary + newBonus - newDeductions;
+        
 
 
         // Get the instance of EmployeeManager
