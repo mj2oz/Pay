@@ -35,7 +35,7 @@ public class Employee {
     }
 
     public double getSalary() {
-        return salary;
+        return total_salary;
     }
 
     // Setter for salary
