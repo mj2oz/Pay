@@ -94,6 +94,12 @@ public class change_password extends javax.swing.JFrame {
 
         jLabel5.setText("Confirm Password");
 
+        old_pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                old_passActionPerformed(evt);
+            }
+        });
+
         jButton1.setBackground(new java.awt.Color(0, 204, 255));
         jButton1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -176,10 +182,15 @@ public class change_password extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //"previous page" button to return to the main page
         main_page main_page = new main_page();
         main_page.show();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void old_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_old_passActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_old_passActionPerformed
 
     /**
      * @param args the command line arguments

@@ -157,6 +157,7 @@ private void displayEmployees() {
     }//GEN-LAST:event_Generate_ReportActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //"previous page" button to return to the main page
         main_page main_page = new main_page();
         main_page.show();
         dispose();
