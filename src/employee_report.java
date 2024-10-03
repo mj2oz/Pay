@@ -17,7 +17,8 @@ public class employee_report extends javax.swing.JFrame {
      */
     public employee_report() {
         initComponents();
-        employeeManager = new EmployeeManager(); // Initialize the EmployeeManager        
+        employeeManager = EmployeeManager.getInstance(); // Get the Singleton instance
+        // Initialize the EmployeeManager        
     }
 
 
@@ -25,7 +26,7 @@ public class employee_report extends javax.swing.JFrame {
     
 private void displayEmployees() {
     jTextArea1.setText(""); // Clear existing text
-    ArrayList<Employee> employees = employeeManager.getEmployees(); // Get the list of employees
+    ArrayList<Employee> employees = (ArrayList<Employee>) employeeManager.getEmployees(); // Get the list of employees
     for (Employee emp : employees) {
         jTextArea1.append(emp.displayInfo() + "\n"); // Append each employee's info
     }
