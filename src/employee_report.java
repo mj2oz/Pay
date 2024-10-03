@@ -5,7 +5,7 @@
 
 /**
  *
- * @author amrr
+ * @author amrr/home/amrr/payroll project
  */
 import java.util.ArrayList;
 
@@ -87,6 +87,7 @@ private void displayEmployees() {
         jLabel2.setText("Employee Report");
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
